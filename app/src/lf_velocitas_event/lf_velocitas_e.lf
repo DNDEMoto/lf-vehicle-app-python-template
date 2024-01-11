@@ -5,7 +5,7 @@ reactor LFVelocitas {
     physical action Vehicle_speed
     logical action test
     preamble {=
-        from sdv.vehicle_app import VehicleApp
+        from velocitas_sdk.vehicle_app import VehicleApp
         from vehicle import Vehicle, vehicle
         import asyncio
         import threading
@@ -18,7 +18,7 @@ reactor LFVelocitas {
 
         class DataReader(VehicleApp):
             from vehicle import Vehicle
-            from sdv.vdb.reply import DataPointReply
+            from velocitas_sdk.vdb.reply import DataPointReply
             def __init__(self, vehicle: Vehicle, Vehicle_speed):
                 super().__init__()
                 self.vehicle = vehicle

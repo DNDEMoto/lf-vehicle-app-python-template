@@ -12,8 +12,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-from sdv.vdb.reply import DataPointReply
-from sdv.vehicle_app import VehicleApp
+from velocitas_sdk.vdb.reply import DataPointReply
+from velocitas_sdk.vehicle_app import VehicleApp
 from vehicle import Vehicle, vehicle  # type: ignore
 
 
