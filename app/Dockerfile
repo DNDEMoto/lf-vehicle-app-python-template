@@ -69,11 +69,11 @@ WORKDIR /workspace/app
 RUN mkdir -p /workspace/app/dist
 RUN lfc -o dist src/lf_velocitas_event/lf_velocitas_e.lf
 RUN mv dist/bin/lf_velocitas_e dist/bin/run-exe
-# RUN pyinstaller --clean -F -s src/main.py
+RUN pyinstaller --clean -F -s dist/src-gen/lf_velocitas_event/lf_velocitas_e/lf_velocitas_e.py
 
-# WORKDIR /workspace/app/dist
+WORKDIR /workspace/app/dist
 
-# RUN staticx main run-exe
+RUN staticx lf_velocitas_e run-exe
 
 # Runner stage, to copy the executable
 #####################
@@ -81,8 +81,8 @@ RUN mv dist/bin/lf_velocitas_e dist/bin/run-exe
 FROM scratch
 
 # for LinguaFranca
-COPY --from=builder ./workspace/app/dist/* /dist/
-# COPY --from=builder ./workspace/app/dist/run-exe /dist/
+# COPY --from=builder ./workspace/app/dist/* /dist/
+COPY --from=builder ./workspace/app/dist/run-exe /dist/
 #####################
 
 WORKDIR /tmp
