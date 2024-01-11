@@ -2,32 +2,6 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Local Runtime - Run LF-Velocitas Event App",
-			"detail": "Starts the VehicleApp under development (including Dapr sidecar if middleware type is Dapr)",
-			"type": "shell",
-			"command": [
-				"velocitas exec runtime-local run-vehicle-app --dapr-app-id vehicleapp --dapr-app-port 50008 ${workspaceFolder}/app/bin/lf_velocitas_e"
-			],
-			"presentation": {
-				"close": true,
-				"reveal": "never"
-			},
-			"problemMatcher": []
-		},
-		{
-			"label": "Local Runtime - Run LF-Velocitas Polling App",
-			"detail": "Starts the VehicleApp under development (including Dapr sidecar if middleware type is Dapr)",
-			"type": "shell",
-			"command": [
-				"velocitas exec runtime-local run-vehicle-app --dapr-app-id vehicleapp --dapr-app-port 50008 ${workspaceFolder}/app/bin/lf_velocitas_p"
-			],
-			"presentation": {
-				"close": true,
-				"reveal": "never"
-			},
-			"problemMatcher": []
-		},
-		{
 			"label": "dapr-sidecar-start",
 			"detail": "Start Dapr sidecar (with dapr run) to be present for debugging the VehicleApp (used by launch config).",
 			"type": "shell",

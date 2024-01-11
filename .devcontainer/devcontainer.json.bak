@@ -88,27 +88,12 @@
 				"ms-python.isort",
 				"ms-python.flake8",
 				"ms-python.black-formatter",
-				"ms-python.mypy-type-checker",
-				"lf-lang.vscode-lingua-franca"
+				"ms-python.mypy-type-checker"
 			]
 		}
 	},
-	"onCreateCommand": {
-		"velocitas": "bash .devcontainer/scripts/onCreateCommand.sh",
-		"lf": "sudo mkdir -p /workspaces/.codespaces/.persistedshare/logs && sudo chmod -R 777 /workspaces/.codespaces/.persistedshare/logs"
-	},
-	"postStartCommand": {
-		"velocitas": "bash .devcontainer/scripts/postStartCommand.sh",
-		"lf-setup-user-env": ["/bin/bash", "-c", "(bash -i ./.devcontainer/lf-scripts/setup-user-env.bash >> /workspaces/.codespaces/.persistedshare/logs/stdout-env.log 2>> /workspaces/.codespaces/.persistedshare/logs/stderr-env.log) || (echo setup-user-env exited with nonzero code)"],
-		"lf-setup": ["/bin/bash", "-c", "(bash ./.devcontainer/lf-scripts/setup-lf.bash nightly >> /workspaces/.codespaces/.persistedshare/logs/stdout-lf.log 2>> /workspaces/.codespaces/.persistedshare/logs/stderr-lf.log) || (echo setup-lf exited with nonzero code)"]
-	},
+	"onCreateCommand": "bash .devcontainer/scripts/onCreateCommand.sh",
+	"postStartCommand": "bash .devcontainer/scripts/postStartCommand.sh",
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode",
-	"remoteEnv": {
-        // Unsure if this is a good idea, as other people might fork this and change name
-        "LF_PATH": "${containerWorkspaceFolder}/lingua-franca",
-        // We must include SDKMAN here, because otherwise node which VSCode uses will disregard new java installed by SDKMAN, LF extension will get confused and use the old version.
-        // Not portable. But what can you do?
-        "PATH": "${containerWorkspaceFolder}/lingua-franca/bin:/home/vscode/.sdkman/candidates/java/current/bin:${containerEnv:PATH}"
-	}
+	"remoteUser": "vscode"
 }

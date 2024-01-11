@@ -21,7 +21,6 @@ on:
     # Run only on branches/commits and not tags
     branches:
       - main
-      - lf-integ
 
 jobs:
   get-app-name:

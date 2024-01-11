@@ -1,0 +1,30 @@
+target Python {
+  keepalive: true, // Do not exit when event queue is empty.
+  files: [speed_app.py]
+}
+main reactor {
+  timer t(0, 1000 msec);
+  preamble {=
+    import speed_app
+    import asyncio
+    import threading
+    def run_asyncio_loop(self):
+        loop = self.asyncio.new_event_loop()
+        self.asyncio.set_event_loop(loop)
+        # instantiate velocitas speed app
+        self.sa_ins = self.speed_app.instantiate()
+        # イベントループ内で非同期タスクを実行
+        loop.run_until_complete(self.sa_ins.run())
+  =}
+  reaction(startup) {=
+    print("LF Startup")
+    asyncio_thread = self.threading.Thread(target=self.run_asyncio_loop)
+    asyncio_thread.start()
+  =}
+  reaction(t) {=
+    print("LF Timer Event")
+    # Need to check by hasattr, the timing of call by LF runtime, it not be instantiated
+    if hasattr(self,"sa_ins"):
+      print("LF Speed: {}".format(self.sa_ins.get_speed()))
+  =}
+}

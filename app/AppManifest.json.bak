@@ -1,6 +1,6 @@
 {
     "manifestVersion": "v3",
-    "name": "lf-velocitas-bridge-sample",
+    "name": "SampleApp",
     "interfaces": [
         {
             "type": "vehicle-signal-interface",
