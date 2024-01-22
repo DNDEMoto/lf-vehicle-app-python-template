@@ -1,4 +1,5 @@
 target Python {
+    docker: true,
     keepalive: true, // Do not exit when event queue is empty.
 }
 reactor LFVelocitas {

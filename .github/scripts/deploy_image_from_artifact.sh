@@ -36,7 +36,7 @@ helm install vapp-chart $HELM_CONFIG_DIR \
     --set imageVehicleApp.name=$APP_NAME_LOWERCASE \
     --set imageVehicleApp.daprAppid=$APP_NAME_LOWERCASE \
     --set imageVehicleApp.daprPort=$APP_PORT \
-    --wait --timeout 60s --debug
+    --wait --timeout 600s --debug
 
 kubectl get svc --all-namespaces
 kubectl get pods
